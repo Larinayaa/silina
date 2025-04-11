@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iryna Silina | Енерготерапевт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: url('k2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #0a3d62;
+            line-height: 1.6;
+            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(10, 61, 98, 0.2);
+            overflow: hidden;
+            padding-bottom: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .profile-img-container {
+            width: 50%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 50%;
+            border: 4px solid #4ecdc4;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            color: #0a3d62;
+        }
+        
+        .specialization {
+            font-size: 16px;
+            color: #3c6382;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .description {
+            background-color: rgba(78, 205, 196, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px;
+            font-size: 15px;
+            text-align: center;
+            color: #0a3d62;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            background-color: #3dc1d3;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: #38a9bb;
+            transform: translateY(-2px);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 61, 98, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            background-color: #3dc1d3;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .modal-btn.monobank {
+            background-color: #6a3ba8;
+        }
+        
+        .modal-btn.instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+        
+        .modal-btn.telegram {
+            background-color: #0088cc;
+        }
+        
+        .modal-btn.whatsapp {
+            background-color: #25D366;
+        }
+        
+        .modal-btn.revolut {
+            background-color: #0075ff;
+        }
+        
+        .modal-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #3c6382;
+            background: none;
+            border: none;
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #0a3d62;
+            margin-bottom: 15px;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .bank-details {
+            text-align: left;
+            margin-top: 20px;
+            background: rgba(78, 205, 196, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+        
+        .bank-details p {
+            margin-bottom: 8px;
+        }
+        
+        .bank-details strong {
+            color: #0a3d62;
+        }
+        
+        .copy-btn {
+            background-color: #3dc1d3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #38a9bb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-img-container">
+            <img src="k1.jpg" alt="Iryna Silina" class="profile-img">
+        </div>
+        
+        <div class="profile-info">
+            <h1>Iryna Silina</h1>
+            <div class="specialization">Енерготерапевт/Регресолог/Психосоматика/Призначення</div>
+        </div>
+        
+        <div class="description">
+            Допоможу навести лад у думках та почуттях. Розкрию твоє призначення. 
+            Робота з родовими сценаріями. Допоможу у ситуаціях, де лікарі безсилі.
+        </div>
+        
+        <div class="buttons">
+            <button class="btn" id="contactBtn">Зв'язатися</button>
+            <button class="btn" id="requisitesBtn">Реквізити</button>
+        </div>
+    </div>
+    
+    <!-- Модальное окно контактов -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeContactModal">&times;</button>
+            <h2>Оберіть спосіб зв'язку</h2>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn instagram" id="instagramBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                    Instagram
+                </button>
+                <button class="modal-btn telegram" id="telegramBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                        <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
+                    </svg>
+                    Telegram
+                </button>
+                <button class="modal-btn whatsapp" id="whatsappBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                    </svg>
+                    WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно реквизитов -->
+    <div class="modal" id="requisitesModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeRequisitesModal">&times;</button>
+            <h2>Оберіть спосіб оплати</h2>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn monobank" id="monobankBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/>
+                    </svg>
+                    Monobank
+                </button>
+                <button class="modal-btn revolut" id="revolutBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    Revolut
+                </button>
+                <button class="modal-btn" id="europeBankBtn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    Банківський рахунок Європи
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно банковских реквизитов -->
+    <div class="modal" id="bankDetailsModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeBankDetailsModal">&times;</button>
+            <h2>Банківські реквізити</h2>
+            
+            <div class="bank-details">
+                <p><strong>Отримувач:</strong> IRYNA SILINA</p>
+                <p><strong>IBAN:</strong> LT86 3250 0203 2107 9093</p>
+                <p><strong>BIC/SWIFT:</strong> REVOLT21</p>
+                <p><strong>Країна:</strong> Литва</p>
+                <p><strong>Валюта:</strong> Євро</p>
+            </div>
+            
+            <button class="copy-btn" id="copyIbanBtn">Копіювати IBAN</button>
+        </div>
+    </div>
+    
+    <script>
+        // Открытие модального окна контактов
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            document.getElementById('contactModal').style.display = 'flex';
+        });
+        
+        // Открытие модального окна реквизитов
+        document.getElementById('requisitesBtn').addEventListener('click', function() {
+            document.getElementById('requisitesModal').style.display = 'flex';
+        });
+        
+        // Открытие Monobank
+        document.getElementById('monobankBtn').addEventListener('click', function() {
+            window.open('https://send.monobank.ua/jar/7RRuGm4koc', '_blank');
+        });
+        
+        // Открытие Revolut
+        document.getElementById('revolutBtn').addEventListener('click', function() {
+            window.open('https://revolut.me/irynasilina', '_blank');
+        });
+        
+        // Открытие банковских реквизитов
+        document.getElementById('europeBankBtn').addEventListener('click', function() {
+            document.getElementById('requisitesModal').style.display = 'none';
+            document.getElementById('bankDetailsModal').style.display = 'flex';
+        });
+        
+        // Закрытие модальных окон
+        document.getElementById('closeContactModal').addEventListener('click', function() {
+            document.getElementById('contactModal').style.display = 'none';
+        });
+        
+        document.getElementById('closeRequisitesModal').addEventListener('click', function() {
+            document.getElementById('requisitesModal').style.display = 'none';
+        });
+        
+        document.getElementById('closeBankDetailsModal').addEventListener('click', function() {
+            document.getElementById('bankDetailsModal').style.display = 'none';
+        });
+        
+        // Закрытие при клике вне модального окна
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('contactModal')) {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+            if (event.target === document.getElementById('requisitesModal')) {
+                document.getElementById('requisitesModal').style.display = 'none';
+            }
+            if (event.target === document.getElementById('bankDetailsModal')) {
+                document.getElementById('bankDetailsModal').style.display = 'none';
+            }
+        });
+        
+        // Социальные сети
+        document.getElementById('instagramBtn').addEventListener('click', function() {
+            window.open('https://www.instagram.com/irinasilina_', '_blank');
+        });
+        
+        document.getElementById('telegramBtn').addEventListener('click', function() {
+            window.open('https://t.me/Irina_Silina2019', '_blank');
+        });
+        
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            window.open('https://wa.me/380979229265', '_blank');
+        });
+        
+        // Копирование IBAN
+        document.getElementById('copyIbanBtn').addEventListener('click', function() {
+            const iban = 'LT86 3250 0203 2107 9093';
+            navigator.clipboard.writeText(iban).then(function() {
+                alert('IBAN скопійовано: ' + iban);
+            }, function() {
+                alert('Не вдалося скопіювати. Спробуйте ще раз.');
+            });
+        });
+    </script>
+</body>
+</html>
